@@ -157,7 +157,6 @@ public class EstimationPokerPage {
     }
 
 
-
     /**
      *  get the location of fibonacci numbers or T-Shirt sizes
      * @param expectedPoint

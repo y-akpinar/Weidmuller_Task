@@ -1,5 +1,5 @@
 @wip
-Feature: User can delete the story
+Feature: The user should be able to delete story
 
   Background:
     Given navigate to estimation poker welcome page

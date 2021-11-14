@@ -32,8 +32,7 @@
 
 
 
-`github_username` : "githubprep"
-`repo_link` :
+
 `project_description` : The test automation is created by using **Cucumber** **BDD** framework with **Selenium** for user interface testing
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -44,8 +43,7 @@
 
 * Java 1.8
 * Selenium 3.1
-* Maven 4.1
-* Cucumber Junit 5.7
+* Cucumber Junit 6.11.0
 * Gherkin BDD
 * POM
 * Singleton pattern
@@ -68,8 +66,8 @@ Than you can run the framework in your local.
 
 ### Prerequisites
 It is Java-Selenium project. To run it needs Java 1.8 jdk.
-You may run that test framework on your local in your IDE (IntelliJ recommended). Also it can start from command line.
-In order to run from commandline you need to have Maven in your local.
+You may run that test framework on your local in your IDE (IntelliJ recommended). 
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

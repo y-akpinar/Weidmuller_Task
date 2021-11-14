@@ -1,5 +1,5 @@
 @wip
-Feature: User can give estimation point for story
+Feature: The user should be able to give estimation point for story
 
 
   Background: Background:
