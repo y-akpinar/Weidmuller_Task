@@ -5,15 +5,12 @@ import com.weidmuller.pages.WelcomePage;
 import com.weidmuller.utilities.BrowserUtils;
 import com.weidmuller.utilities.ConfigurationReader;
 import com.weidmuller.utilities.Driver;
+import com.weidmuller.utilities.StoryGenerator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class CreateGameStepDefs {
@@ -80,6 +77,7 @@ public class CreateGameStepDefs {
     public void theUserEnterTheUsername(String username) {
         expectedUsername=username;
         welcomePage.usernameBox.sendKeys(username);
+        StoryGenerator.nameList(username);
     }
 
     @And("the user clicks join button")

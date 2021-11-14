@@ -2,13 +2,11 @@ package com.weidmuller.step_definitions;
 
 import com.weidmuller.pages.EstimationPokerPage;
 import com.weidmuller.utilities.BrowserUtils;
-import com.weidmuller.utilities.ConfigurationReader;
-import com.weidmuller.utilities.Driver;
+import com.weidmuller.utilities.StoryGenerator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 
@@ -20,7 +18,7 @@ public class SetEstimationPointstepDefs {
 
     @When("the user select the new added story")
     public void theUserSelectTheNewAddedStory() {
-        WebElement storyElement = estimationPokerPage.getStoryElement(AddNewStoryStepDefs.expectedStory);
+        WebElement storyElement = estimationPokerPage.getStoryElement(StoryGenerator.storyList.get(0));
         BrowserUtils.waitForClickablility(storyElement, 10);
         storyElement.click();
     }
@@ -28,7 +26,8 @@ public class SetEstimationPointstepDefs {
     @Then("the system display the selected story properly")
     public void the_system_display_the_selected_story_properly() {
         String actualStory = estimationPokerPage.estimatedStoryText.getText().substring(13);
-        Assert.assertEquals(AddNewStoryStepDefs.expectedStory, actualStory);
+        Assert.assertEquals(StoryGenerator.storyList.get(0), actualStory);
+        StoryGenerator.storyList.clear();
     }
 
 
@@ -46,9 +45,10 @@ public class SetEstimationPointstepDefs {
 
     @Then("the system display the username properly")
     public void theSystemDisplayTheUsernameProperly() {
-        String expectedUsername = CreateGameStepDefs.expectedUsername;
+        String expectedUsername = StoryGenerator.nameList.get(0);
         String actualUsername = estimationPokerPage.estimatedPersonName.getText();
         Assert.assertEquals(expectedUsername, actualUsername);
+        StoryGenerator.nameList.clear();
 
     }
 
@@ -65,15 +65,9 @@ public class SetEstimationPointstepDefs {
 
     @Then("the system display the given estimation point for the story")
     public void theSystemDisplayTheGivenEstimationPointForTheStory() {
-        String actualStoryPoint = estimationPokerPage.getEstimationPointOfStory(AddNewStoryStepDefs.expectedStory);
+        String actualStoryPoint = estimationPokerPage.getEstimationPointOfStory(StoryGenerator.storyList.get(0));
         Assert.assertEquals(expectedStoryPoint2,actualStoryPoint);
-    }
-
-
-    @Then("the system must not accept the point and must display {string}")
-    public void theSystemMustNotAcceptThePointAndMustDisplay(String expectedMessage) {
-        String actualStoryPoint = estimationPokerPage.getEstimationPointOfStory(AddNewStoryStepDefs.expectedStory);
-        Assert.assertEquals(expectedMessage,actualStoryPoint);
+        StoryGenerator.storyList.clear();
     }
 
 

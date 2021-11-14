@@ -86,8 +86,7 @@ CukesRunner class in Runners folder is responsible for test-run.
 
 3.To run specific Scenarios put the relevant annotation.
 
-You may choose which Scenarios to run with any given name annotations with putting them before the Scenarios. You may run Test with Maven-Lifecycle-Verify path too,
-or from your local shell with maven "mvn verify".
+You may choose which Scenarios to run with any given name annotations with putting them before the Scenarios.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p> 
@@ -105,6 +104,6 @@ or from your local shell with maven "mvn verify".
 
 Yasin Akpinar -- akpinaryasin1991@gmail.com
 
-Project Link: 
+Project Link: https://github.com/y-akpinar/Weidmuller_Task
 
 <p align="right">(<a href="#top">back to top</a>)</p>

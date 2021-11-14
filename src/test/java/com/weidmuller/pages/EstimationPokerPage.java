@@ -1,6 +1,6 @@
 package com.weidmuller.pages;
 
-import com.weidmuller.step_definitions.AddNewStoryStepDefs;
+
 import com.weidmuller.utilities.BrowserUtils;
 import com.weidmuller.utilities.Driver;
 import org.openqa.selenium.By;
@@ -17,13 +17,7 @@ public class EstimationPokerPage {
 
     }
 
-    @FindBy(css = ".header.mb-4>h3")
-    public WebElement header;
-
-    @FindBy(xpath = "//table[@class='table table-sm']/tbody/tr[1]/td")
-    public WebElement firstTableRowData;
-
-    @FindBy(xpath = "(//button[@type='button'])[2]")
+    @FindBy(xpath = "//table[@class='table table-sm']//th/button")
     public WebElement storyBtn;
 
     @FindBy(css = "#storyText")
@@ -65,6 +59,9 @@ public class EstimationPokerPage {
     @FindBy(xpath = "//div[@class=\"input-group\"]/div/button")
     public WebElement setEstimationButton;
 
+    @FindBy(xpath = "//table[@class='table table-sm']/tbody/tr/td[2]")
+    public List<WebElement> storyList;
+
 
 
 
@@ -80,6 +77,8 @@ public class EstimationPokerPage {
         int size = rowList.size();
         String lastStoryLocator="//table[@class='table table-sm']/tbody/tr[" + size+ "]/td[2]";
         WebElement lastStoryOfTable = Driver.get().findElement(By.xpath(lastStoryLocator));
+
+
 
         String actualStory=lastStoryOfTable.getText();
 
@@ -102,7 +101,7 @@ public class EstimationPokerPage {
     }
 
     /**
-     *  get the location of story on the table
+     *  get the location of specific story on the table
      * @param expectedStory
      * @return
      */
@@ -124,7 +123,7 @@ public class EstimationPokerPage {
 
 
     /**
-     *  it return the delete button of story that is on the last row of table
+     *  it return the delete button location of story that is on the last row of table
      *
      * @return
      */
@@ -141,7 +140,26 @@ public class EstimationPokerPage {
     }
 
     /**
-     *  get the location of fibonacci numbers
+     * it return the delete button location for the specific story
+     *
+     * @param expectedStory
+     * @return
+     */
+
+    public WebElement getDeleteButton(String expectedStory){
+
+        BrowserUtils.waitFor(2);
+        String locationOfDeleteButton= "//table[@class='table table-sm']//td[.='" + expectedStory + "']/../td[4]/button";
+        WebElement deleteButtonLocate = Driver.get().findElement(By.xpath(locationOfDeleteButton));
+
+        return deleteButtonLocate;
+
+    }
+
+
+
+    /**
+     *  get the location of fibonacci numbers or T-Shirt sizes
      * @param expectedPoint
      * @return
      */
@@ -156,6 +174,7 @@ public class EstimationPokerPage {
         }
         return expectedElement;
     }
+
 
 
 

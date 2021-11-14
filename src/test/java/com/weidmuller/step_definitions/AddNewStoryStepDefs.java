@@ -2,10 +2,13 @@ package com.weidmuller.step_definitions;
 
 import com.weidmuller.pages.EstimationPokerPage;
 import com.weidmuller.utilities.BrowserUtils;
+import com.weidmuller.utilities.StoryGenerator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+
+import java.util.List;
 
 public class AddNewStoryStepDefs {
 
@@ -19,9 +22,10 @@ public class AddNewStoryStepDefs {
 
     @And("the user enter the story {string} in estimation poker page")
     public void theUserEnterTheStoryInEstimationPokerPage(String story) {
-
         expectedStory=story;
         estimationPokerPage.storyTextBox.sendKeys(story);
+        StoryGenerator.addStoryToList(story);
+
     }
 
     @And("the user click on the add a story button")
@@ -33,7 +37,12 @@ public class AddNewStoryStepDefs {
 
     @Then("verify that story is already added")
     public void verifyThatStoryIsAlreadyAdded() {
-        Assert.assertEquals(expectedStory,estimationPokerPage.getActualStory());
+
+        BrowserUtils.waitFor(1);
+        List<String> actualStoryList = BrowserUtils.getElementsText(estimationPokerPage.storyList);
+
+        Assert.assertTrue(actualStoryList.containsAll(StoryGenerator.storyList));
+        StoryGenerator.storyList.clear();
     }
 
     @And("the user click on the story close button")
